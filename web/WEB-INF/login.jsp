@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,6 +19,6 @@
             password: <input type="password" required name="password"><br>
             <input type="submit" value="Submit">
         </form>
-        <a href="/forgot">Forgot Password?</a>
+        <a href="<c:url value='/forgot'></c:url>">Forgot Password?</a>
     </body>
 </html>
