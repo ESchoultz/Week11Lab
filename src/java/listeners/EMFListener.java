@@ -18,15 +18,15 @@ public class EMFListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        
+
         System.out.println("application is starting");
-        
+
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         DBUtil.close();
         System.out.println("application is ending");
-        
+
     }
 }

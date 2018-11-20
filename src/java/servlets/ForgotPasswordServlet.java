@@ -21,7 +21,7 @@ public class ForgotPasswordServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("WEB-INF/forgot.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/forgot.jsp").forward(request, response);
     }
 
     /**
@@ -35,7 +35,7 @@ public class ForgotPasswordServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        String email = request.getParameter("email");
     }
-    
+
 }

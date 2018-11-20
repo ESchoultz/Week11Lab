@@ -26,18 +26,16 @@ public class LoginServlet extends HttpServlet {
         // more secure, logout if seeing login page
         HttpSession session = request.getSession();
         session.invalidate();
-        
+
         getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
-
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        
-        
+
         AccountService ac = new AccountService();
         if (ac.login(username, password, getServletContext().getRealPath("/WEB-INF")) != null) {
             HttpSession session = request.getSession();

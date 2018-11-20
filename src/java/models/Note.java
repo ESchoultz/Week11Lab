@@ -136,5 +136,5 @@ public class Note implements Serializable {
     public String toString() {
         return "models.Note[ noteid=" + noteid + " ]";
     }
-    
+
 }

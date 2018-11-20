@@ -21,7 +21,7 @@ public class UserDB {
         try {
             Role role = em.find(Role.class, 2);  // 2 is for regular user
             user.setRole(role);
-            
+
             trans.begin();
             em.persist(user);
             trans.commit();
@@ -56,7 +56,7 @@ public class UserDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         try {
             List<User> users = em.createNamedQuery("User.findAll", User.class).getResultList();
-            return users;                
+            return users;
         } finally {
             em.close();
         }
@@ -88,4 +88,11 @@ public class UserDB {
             em.close();
         }
     }
+
+    public User getUserByEmail(String email) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        User user = em.createNamedQuery("User.findByEmail", User.class).setParameter("email", email).getSingleResult();
+        return user;
+    }
+
 }

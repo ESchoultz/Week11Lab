@@ -19,6 +19,6 @@
             password: <input type="password" required name="password"><br>
             <input type="submit" value="Submit">
         </form>
-        <a href="<c:url value='/forgot'></c:url>">Forgot Password?</a>
+        <a href="<c:url value='forgot'></c:url>">Forgot Password?</a>
     </body>
 </html>

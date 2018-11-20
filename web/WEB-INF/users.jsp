@@ -29,12 +29,12 @@
                     <td>${user.role.rolename}</td>
                     <td>
                         <ul>
-                        <c:forEach var="note" items="${user.noteList}">
-                            <li>${note.title}</li>
-                        </c:forEach>
+                            <c:forEach var="note" items="${user.noteList}">
+                                <li>${note.title}</li>
+                                </c:forEach>
                         </ul>
                     </td>
-                    
+
                     <td>
                         <form action="users" method="post" >
                             <input type="submit" value="Delete">

@@ -20,7 +20,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 public class GmailService {
-    
+
     public static void sendMail(String email, String subject,
             String template, HashMap<String, String> tags) {
         try {
@@ -28,31 +28,30 @@ public class GmailService {
             BufferedReader br = new BufferedReader(new FileReader(new File(template)));
             String line = br.readLine();
             String body = "";
-            while(line != null) {
+            while (line != null) {
                 body += line;
                 line = br.readLine();
             }
-            
+
             // replace all heart tags with values
-            for(String tag : tags.keySet()) {
+            for (String tag : tags.keySet()) {
                 body = body.replace("{{" + tag + "}}", tags.get(tag));
             }
-            
+
             // send email
             sendMail(email, subject, body, true);
-            
+
         } catch (Exception ex) {
             Logger.getLogger(GmailService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
     }
-    
+
     public static void sendMail(String to, String subject, String body, boolean bodyIsHTML) throws MessagingException, NamingException {
-        Context env = (Context)new InitialContext().lookup("java:comp/env");
-        String username = (String)env.lookup("webmail-username");
-        String password = (String)env.lookup("webmail-password");
-        
+        Context env = (Context) new InitialContext().lookup("java:comp/env");
+        String username = (String) env.lookup("webmail-username");
+        String password = (String) env.lookup("webmail-password");
+
         Properties props = new Properties();
         props.put("mail.transport.protocol", "smtps");
         props.put("mail.smtps.host", "smtp.gmail.com");
@@ -61,7 +60,7 @@ public class GmailService {
         props.put("mail.smtps.quitwait", "false");
         Session session = Session.getDefaultInstance(props);
         session.setDebug(true);
-        
+
         // create a message
         Message message = new MimeMessage(session);
         message.setSubject(subject);
@@ -70,13 +69,13 @@ public class GmailService {
         } else {
             message.setText(body);
         }
-        
+
         // address the message
         Address fromAddress = new InternetAddress(username);
         Address toAddress = new InternetAddress(to);
         message.setFrom(fromAddress);
         message.setRecipient(Message.RecipientType.TO, toAddress);
-        
+
         // send the message
         Transport transport = session.getTransport();
         transport.connect(username, password);
