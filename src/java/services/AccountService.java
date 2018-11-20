@@ -50,8 +50,22 @@ public class AccountService {
         return null;
     }
 
-    public boolean forgotPassword(String email, String path) {
+     public boolean forgotPassword(String email, String path) {
 
-        return false;
+        UserService service = new UserService();
+        User user = service.getByEmail(email);
+
+        String subject = "Forgotten Password _ helohelo";
+        String template = path + "/emailtemplates/forgot.html";
+
+        HashMap<String, String> tags = new HashMap<>();
+        tags.put("firstname", user.getFirstname());
+        tags.put("lastname", user.getLastname());
+        tags.put("username", user.getUsername());
+        tags.put("password", user.getPassword());
+
+        GmailService.sendMail(email, subject, template, tags);
+        return true;
+
     }
 }
