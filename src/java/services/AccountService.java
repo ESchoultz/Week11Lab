@@ -55,8 +55,8 @@ public class AccountService {
         UserService service = new UserService();
         User user = service.getByEmail(email);
 
-        String subject = "Forgotten Password _ helohelo";
-        String template = path + "/emailtemplates/forgot.html";
+        String subject = "Forgotten Password!";
+        String template = path + "/emailtemplates/forgotten.html";
 
         HashMap<String, String> tags = new HashMap<>();
         tags.put("firstname", user.getFirstname());

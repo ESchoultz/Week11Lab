@@ -47,7 +47,7 @@ public class UserService {
     }
 
     public User getByEmail(String email) {
-
-        return null;
+        User u = userDB.getUserByEmail(email);
+        return u;
     }
 }

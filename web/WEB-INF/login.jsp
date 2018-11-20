@@ -20,5 +20,8 @@
             <input type="submit" value="Submit">
         </form>
         <a href="<c:url value='forgot'></c:url>">Forgot Password?</a>
+        <div>
+            ${message}
+        </div>
     </body>
 </html>

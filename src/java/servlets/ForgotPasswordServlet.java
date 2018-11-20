@@ -6,7 +6,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -41,7 +40,7 @@ public class ForgotPasswordServlet extends HttpServlet {
         if (as.forgotPassword(request.getParameter("email"),getServletContext().getRealPath("/WEB-INF"))){
             request.setAttribute("message", "The email is succesfully sent!");
         }else{
-            request.setAttribute("message", "The email is did not send!");
+            request.setAttribute("message", "No message sent.");
         }
         response.sendRedirect("login");
         
